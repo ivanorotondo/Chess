@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--ChessVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ChessVC" id="BYZ-38-t0r" customClass="ChessVC" customModule="Chess" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" restorationIdentifier="Chessboard" translatesAutoresizingMaskIntoConstraints="NO" id="xg9-lE-hX6" customClass="Chessboard" customModule="Chess" customModuleProvider="target">
+                                <rect key="frame" x="65" y="65" width="470" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xg9-lE-hX6" secondAttribute="height" multiplier="1:1" id="fbl-Z4-tne"/>
+                                    <constraint firstAttribute="width" secondItem="xg9-lE-hX6" secondAttribute="height" multiplier="11:10" constant="-47" id="zLd-IZ-MTO"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zLd-IZ-MTO"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xg9-lE-hX6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="45" id="4Z0-Ex-BEq"/>
+                            <constraint firstItem="xg9-lE-hX6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Axm-ML-s5R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xg9-lE-hX6" secondAttribute="trailing" constant="45" id="Thu-MC-YWX"/>
+                            <constraint firstItem="xg9-lE-hX6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YnF-2I-Vuf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="574" y="374"/>
+        </scene>
+    </scenes>
+</document>
