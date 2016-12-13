@@ -11,10 +11,8 @@ import QuartzCore
 
 @IBDesignable
 class Chessboard: UIView {
-    
-    @IBInspectable var fillColor: UIColor = UIColor.greenColor()
-    
-    var chess : Chess?
+        
+    var chessEngine : ChessEngine?
     var squareLength : CGFloat!
     
     
@@ -22,10 +20,132 @@ class Chessboard: UIView {
         
         squareLength = bounds.width/8
 
-//        drawLines(squareLength)
-        drawSquares()
-        drawPieces(chess!.chessboard)
+        drawChessboardSquares()
+        drawMoves()
+        drawPieces(chessEngine!.chessboard)
         
+        
+    }
+    
+        
+    @objc private func pieceWasTapped(sender: UITapGestureRecognizer) {
+        let (row, col) = getPositionOfPoint(sender.locationInView(self).x, y: sender.locationInView(self).y)
+        showMovesForThisPiece(row, col: col)
+//        print("row: \(row), col: \(col)")
+    }
+    
+    
+    private func showMovesForThisPiece(row: Int, col: Int) {
+        
+        hideOldHighlightedPositions()
+        
+        let piece = chessEngine!.getPieceInPosition(row, col: col)
+        let possibleMoves = chessEngine!.possibleMovesOfThisPiece(piece, row: row, col: col)
+        
+        markHighlightedPositions(possibleMoves)
+        self.setNeedsDisplay()
+    }
+    
+    
+    private func getPositionOfPoint(x: CGFloat, y: CGFloat) -> (Int, Int){
+        let row = 7 - Int(y / squareLength)
+        let col = Int(x / squareLength)
+        return (row, col)
+    }
+    
+    
+    private func getRectOfPosition(row: Int, col: Int) -> CGRect {
+        let x = (CGFloat(col - 1)) * squareLength
+        let y = (CGFloat(8 - row)) * squareLength
+        return  CGRect(x: x, y: y, width: squareLength, height: squareLength)
+    }
+    
+    
+    private func hideOldHighlightedPositions() {
+        
+        for row in 1...8 {
+            for col in 1...8{
+                let thisPiece = chessEngine?.chessboard[row - 1][col - 1]
+                if thisPiece < 0 {
+                    chessEngine?.chessboard[row - 1][col - 1] = 100 + thisPiece!
+                }
+            }
+        }
+    }
+    
+    
+    private func markHighlightedPositions(positions: [[Int]]) {
+        
+        for position in positions {
+            let thisPiece = chessEngine?.chessboard[position[0]][position[1]]
+            chessEngine?.chessboard[position[0]][position[1]] = thisPiece! - 100
+        }
+    }
+    
+    
+    private func drawChessboardSquares() {
+        func isEven(number: Int) -> Bool {
+            if number % 2 != 0 {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        for row in 1...8 {
+            for col in 1...8{
+                
+                let square = getRectOfPosition(row, col: col)
+                var squareBP:UIBezierPath = UIBezierPath(rect: square)
+                
+                if (isEven(row) && isEven(col)) || (!isEven(row) && !isEven(col)) {
+                    UIColor.blackColor().setStroke()
+                    squareBP.lineWidth = 0
+                    squareBP.fill()
+                    squareBP.stroke()
+                }
+            }
+        }
+    }
+    
+    private func drawMoves() {
+        for row in 1...8 {
+            for col in 1...8{
+                
+                let square = getRectOfPosition(row, col: col)
+                var squareBP:UIBezierPath = UIBezierPath(rect: square)
+                
+                if chessEngine?.chessboard[row - 1][col - 1] < 0 {
+                    UIColor.redColor().setStroke()
+                    squareBP.lineWidth = 3
+                    squareBP.stroke()
+                }
+            }
+        }
+    }
+    
+    
+    private func drawLines(squareLength : CGFloat) {
+        
+        var spanArray = [0, squareLength, 2 * squareLength, 3 * squareLength, 4*squareLength, 5*squareLength, 6*squareLength, 7*squareLength, 8*squareLength]
+        
+        for span in spanArray {
+            var verticalLine = UIBezierPath()
+            var horizontalLine = UIBezierPath()
+            
+            verticalLine.lineWidth = 1
+            horizontalLine.lineWidth = 1
+            
+            verticalLine.moveToPoint(CGPoint(x: span, y: 0))
+            horizontalLine.moveToPoint(CGPoint(x: 0,y: span))
+            
+            verticalLine.addLineToPoint(CGPoint(x: span,y: bounds.height))
+            horizontalLine.addLineToPoint(CGPoint(x: bounds.height, y: span))
+            
+            UIColor.blackColor().setStroke()
+            verticalLine.stroke()
+            horizontalLine.stroke()
+        }
     }
     
     
@@ -33,11 +153,11 @@ class Chessboard: UIView {
         
         for row in 1...8 {
             for col in 1...8{
-
-                let piece = chessboard[row - 1][col - 1]
-
-                if piece != 0 {
                 
+                let piece = chessboard[row - 1][col - 1]
+                
+                if piece != 0 {
+                    
                     let rect = getRectOfPosition(row, col: col)
                     let pieceImage = UIImageView(frame: rect)
                     
@@ -78,133 +198,4 @@ class Chessboard: UIView {
             }
         }
     }
-    
-    
-    @objc private func pieceWasTapped(sender: UITapGestureRecognizer) {
-        let (row, col) = pointToPosition(sender.locationInView(self).x, y: sender.locationInView(self).y)
-        showMovesForThisPiece(row, col: col)
-//        print("row: \(row), col: \(col)")
-    }
-    
-    
-    private func showMovesForThisPiece(row: Int, col: Int) {
-        
-        hideOldHighlightedPositions()
-        
-        let piece = chess!.getPieceInPosition(row, col: col)
-        let possibleMoves = chess!.possibleMovesOfThisPiece(piece, row: row, col: col)
-        
-        markHighlightedPositions(possibleMoves)
-        self.setNeedsDisplay()
-    }
-    
-    
-    private func pointToPosition(x: CGFloat, y: CGFloat) -> (Int, Int){
-        let row = 7 - Int(y / squareLength)
-        let col = Int(x / squareLength)
-        return (row, col)
-    }
-    
-    
-    private func getRectOfPosition(row: Int, col: Int) -> CGRect {
-        let x = (CGFloat(col - 1)) * squareLength
-        let y = (CGFloat(8 - row)) * squareLength
-        return  CGRect(x: x, y: y, width: squareLength, height: squareLength)
-    }
-    
-    
-    private func hideOldHighlightedPositions() {
-        
-        for row in 1...8 {
-            for col in 1...8{
-                let thisPiece = chess?.chessboard[row - 1][col - 1]
-                if thisPiece < 0 {
-                    chess?.chessboard[row - 1][col - 1] = 100 + thisPiece!
-                }
-            }
-        }
-    }
-    
-    
-    private func markHighlightedPositions(positions: [[Int]]) {
-        
-        for position in positions {
-            let thisPiece = chess?.chessboard[position[0]][position[1]]
-            chess?.chessboard[position[0]][position[1]] = thisPiece! - 100
-        }
-    }
-    
-    
-    private func drawSquares() {
-        func isEven(number: Int) -> Bool {
-            if number % 2 != 0 {
-                return true
-            } else {
-                return false
-            }
-        }
-        
-        for row in 1...8 {
-            for col in 1...8{
-                
-                let square = getRectOfPosition(row, col: col)
-                var squareBP:UIBezierPath = UIBezierPath(rect: square)
-                
-                if (isEven(row) && isEven(col)) || (!isEven(row) && !isEven(col)) {
-                    UIColor.blackColor().setStroke()
-                    squareBP.lineWidth = 0
-                    squareBP.fill()
-                    squareBP.stroke()
-                }
-            }
-        }
-        
-        for row in 1...8 {
-            for col in 1...8{
-                
-                let square = getRectOfPosition(row, col: col)
-                var squareBP:UIBezierPath = UIBezierPath(rect: square)
-                
-                if chess?.chessboard[row - 1][col - 1] < 0 {
-                    UIColor.redColor().setStroke()
-                    squareBP.lineWidth = 3
-                    squareBP.stroke()
-                }
-            }
-        }
-    }
-    
-    
-    private func drawLines(squareLength : CGFloat) {
-        
-        var spanArray = [0, squareLength, 2 * squareLength, 3 * squareLength, 4*squareLength, 5*squareLength, 6*squareLength, 7*squareLength, 8*squareLength]
-        
-        for span in spanArray {
-            var verticalLine = UIBezierPath()
-            var horizontalLine = UIBezierPath()
-            
-            verticalLine.lineWidth = 1
-            horizontalLine.lineWidth = 1
-            
-            verticalLine.moveToPoint(CGPoint(x: span, y: 0))
-            horizontalLine.moveToPoint(CGPoint(x: 0,y: span))
-            
-            verticalLine.addLineToPoint(CGPoint(x: span,y: bounds.height))
-            horizontalLine.addLineToPoint(CGPoint(x: bounds.height, y: span))
-            
-            UIColor.blackColor().setStroke()
-            verticalLine.stroke()
-            horizontalLine.stroke()
-        }
-    }
-    
-    
-    var initialConfiguration = [[2, 3, 4, 5, 6, 4, 3, 2],
-                                [1, 1, 1, 1, 1, 1, 1, 1],
-                                [0, 0, 0, 0, 0, 0, 0, 0],
-                                [0, 0, 0, 0, 0, 0, 0, 0],
-                                [0, 0, 0, 0, 0, 0, 0, 0],
-                                [0, 0, 0, 0, 0, 0, 0, 0],
-                                [1, 1, 1, 1, 1, 1, 1, 1],
-                                [2, 3, 4, 6, 5, 4, 3, 2]]
 }

@@ -14,7 +14,7 @@
 		92D1E6F51DFF59FE000CDABB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E6F31DFF59FE000CDABB /* LaunchScreen.storyboard */; };
 		92D1E7001DFF59FF000CDABB /* ChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E6FF1DFF59FF000CDABB /* ChessTests.swift */; };
 		92D1E70B1DFF59FF000CDABB /* ChessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E70A1DFF59FF000CDABB /* ChessUITests.swift */; };
-		92D1E7191DFF5A1B000CDABB /* Chess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E7181DFF5A1B000CDABB /* Chess.swift */; };
+		92D1E7191DFF5A1B000CDABB /* ChessEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E7181DFF5A1B000CDABB /* ChessEngine.swift */; };
 		92D1E71B1DFF5D96000CDABB /* Chessboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E71A1DFF5D96000CDABB /* Chessboard.swift */; };
 		92D1E7401E000DB2000CDABB /* BishopBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E7341E000DB2000CDABB /* BishopBlack.png */; };
 		92D1E7411E000DB2000CDABB /* BishopWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E7351E000DB2000CDABB /* BishopWhite.png */; };
@@ -28,6 +28,9 @@
 		92D1E7491E000DB2000CDABB /* QueenWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E73D1E000DB2000CDABB /* QueenWhite.png */; };
 		92D1E74A1E000DB2000CDABB /* RookBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E73E1E000DB2000CDABB /* RookBlack.png */; };
 		92D1E74B1E000DB2000CDABB /* RookWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E73F1E000DB2000CDABB /* RookWhite.png */; };
+		92D1E74F1E008AB2000CDABB /* ChessEnginePawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E74E1E008AB2000CDABB /* ChessEnginePawn.swift */; };
+		92D1E7511E008B82000CDABB /* ChessEngineRook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E7501E008B82000CDABB /* ChessEngineRook.swift */; };
+		92D1E7531E008C87000CDABB /* ChessEngineKnight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E7521E008C87000CDABB /* ChessEngineKnight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +64,7 @@
 		92D1E7061DFF59FF000CDABB /* ChessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D1E70A1DFF59FF000CDABB /* ChessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITests.swift; sourceTree = "<group>"; };
 		92D1E70C1DFF59FF000CDABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92D1E7181DFF5A1B000CDABB /* Chess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chess.swift; sourceTree = "<group>"; };
+		92D1E7181DFF5A1B000CDABB /* ChessEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessEngine.swift; sourceTree = "<group>"; };
 		92D1E71A1DFF5D96000CDABB /* Chessboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chessboard.swift; sourceTree = "<group>"; };
 		92D1E7341E000DB2000CDABB /* BishopBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BishopBlack.png; path = Resources/Pieces/BishopBlack.png; sourceTree = "<group>"; };
 		92D1E7351E000DB2000CDABB /* BishopWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BishopWhite.png; path = Resources/Pieces/BishopWhite.png; sourceTree = "<group>"; };
@@ -75,6 +78,9 @@
 		92D1E73D1E000DB2000CDABB /* QueenWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = QueenWhite.png; path = Resources/Pieces/QueenWhite.png; sourceTree = "<group>"; };
 		92D1E73E1E000DB2000CDABB /* RookBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RookBlack.png; path = Resources/Pieces/RookBlack.png; sourceTree = "<group>"; };
 		92D1E73F1E000DB2000CDABB /* RookWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RookWhite.png; path = Resources/Pieces/RookWhite.png; sourceTree = "<group>"; };
+		92D1E74E1E008AB2000CDABB /* ChessEnginePawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessEnginePawn.swift; sourceTree = "<group>"; };
+		92D1E7501E008B82000CDABB /* ChessEngineRook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessEngineRook.swift; sourceTree = "<group>"; };
+		92D1E7521E008C87000CDABB /* ChessEngineKnight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessEngineKnight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +133,12 @@
 			children = (
 				92D1E6EA1DFF59FE000CDABB /* AppDelegate.swift */,
 				92D1E6EC1DFF59FE000CDABB /* ChessVC.swift */,
-				92D1E7181DFF5A1B000CDABB /* Chess.swift */,
-				92D1E6EE1DFF59FE000CDABB /* Main.storyboard */,
 				92D1E71A1DFF5D96000CDABB /* Chessboard.swift */,
+				92D1E7181DFF5A1B000CDABB /* ChessEngine.swift */,
+				92D1E7501E008B82000CDABB /* ChessEngineRook.swift */,
+				92D1E7521E008C87000CDABB /* ChessEngineKnight.swift */,
+				92D1E74E1E008AB2000CDABB /* ChessEnginePawn.swift */,
+				92D1E6EE1DFF59FE000CDABB /* Main.storyboard */,
 				92D1E6F11DFF59FE000CDABB /* Assets.xcassets */,
 				92D1E6F31DFF59FE000CDABB /* LaunchScreen.storyboard */,
 				92D1E6F61DFF59FE000CDABB /* Info.plist */,
@@ -326,10 +335,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92D1E7191DFF5A1B000CDABB /* Chess.swift in Sources */,
+				92D1E7191DFF5A1B000CDABB /* ChessEngine.swift in Sources */,
 				92D1E71B1DFF5D96000CDABB /* Chessboard.swift in Sources */,
 				92D1E6ED1DFF59FE000CDABB /* ChessVC.swift in Sources */,
+				92D1E7531E008C87000CDABB /* ChessEngineKnight.swift in Sources */,
+				92D1E74F1E008AB2000CDABB /* ChessEnginePawn.swift in Sources */,
 				92D1E6EB1DFF59FE000CDABB /* AppDelegate.swift in Sources */,
+				92D1E7511E008B82000CDABB /* ChessEngineRook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
