@@ -16,6 +16,18 @@
 		92D1E70B1DFF59FF000CDABB /* ChessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E70A1DFF59FF000CDABB /* ChessUITests.swift */; };
 		92D1E7191DFF5A1B000CDABB /* Chess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E7181DFF5A1B000CDABB /* Chess.swift */; };
 		92D1E71B1DFF5D96000CDABB /* Chessboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1E71A1DFF5D96000CDABB /* Chessboard.swift */; };
+		92D1E7401E000DB2000CDABB /* BishopBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E7341E000DB2000CDABB /* BishopBlack.png */; };
+		92D1E7411E000DB2000CDABB /* BishopWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E7351E000DB2000CDABB /* BishopWhite.png */; };
+		92D1E7421E000DB2000CDABB /* KingBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E7361E000DB2000CDABB /* KingBlack.png */; };
+		92D1E7431E000DB2000CDABB /* KingWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E7371E000DB2000CDABB /* KingWhite.png */; };
+		92D1E7441E000DB2000CDABB /* KnightBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E7381E000DB2000CDABB /* KnightBlack.png */; };
+		92D1E7451E000DB2000CDABB /* KnightWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E7391E000DB2000CDABB /* KnightWhite.png */; };
+		92D1E7461E000DB2000CDABB /* PawnBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E73A1E000DB2000CDABB /* PawnBlack.png */; };
+		92D1E7471E000DB2000CDABB /* PawnWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E73B1E000DB2000CDABB /* PawnWhite.png */; };
+		92D1E7481E000DB2000CDABB /* QueenBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E73C1E000DB2000CDABB /* QueenBlack.png */; };
+		92D1E7491E000DB2000CDABB /* QueenWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E73D1E000DB2000CDABB /* QueenWhite.png */; };
+		92D1E74A1E000DB2000CDABB /* RookBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E73E1E000DB2000CDABB /* RookBlack.png */; };
+		92D1E74B1E000DB2000CDABB /* RookWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D1E73F1E000DB2000CDABB /* RookWhite.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +63,18 @@
 		92D1E70C1DFF59FF000CDABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92D1E7181DFF5A1B000CDABB /* Chess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chess.swift; sourceTree = "<group>"; };
 		92D1E71A1DFF5D96000CDABB /* Chessboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chessboard.swift; sourceTree = "<group>"; };
+		92D1E7341E000DB2000CDABB /* BishopBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BishopBlack.png; path = Resources/Pieces/BishopBlack.png; sourceTree = "<group>"; };
+		92D1E7351E000DB2000CDABB /* BishopWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BishopWhite.png; path = Resources/Pieces/BishopWhite.png; sourceTree = "<group>"; };
+		92D1E7361E000DB2000CDABB /* KingBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KingBlack.png; path = Resources/Pieces/KingBlack.png; sourceTree = "<group>"; };
+		92D1E7371E000DB2000CDABB /* KingWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KingWhite.png; path = Resources/Pieces/KingWhite.png; sourceTree = "<group>"; };
+		92D1E7381E000DB2000CDABB /* KnightBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KnightBlack.png; path = Resources/Pieces/KnightBlack.png; sourceTree = "<group>"; };
+		92D1E7391E000DB2000CDABB /* KnightWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KnightWhite.png; path = Resources/Pieces/KnightWhite.png; sourceTree = "<group>"; };
+		92D1E73A1E000DB2000CDABB /* PawnBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PawnBlack.png; path = Resources/Pieces/PawnBlack.png; sourceTree = "<group>"; };
+		92D1E73B1E000DB2000CDABB /* PawnWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PawnWhite.png; path = Resources/Pieces/PawnWhite.png; sourceTree = "<group>"; };
+		92D1E73C1E000DB2000CDABB /* QueenBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = QueenBlack.png; path = Resources/Pieces/QueenBlack.png; sourceTree = "<group>"; };
+		92D1E73D1E000DB2000CDABB /* QueenWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = QueenWhite.png; path = Resources/Pieces/QueenWhite.png; sourceTree = "<group>"; };
+		92D1E73E1E000DB2000CDABB /* RookBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RookBlack.png; path = Resources/Pieces/RookBlack.png; sourceTree = "<group>"; };
+		92D1E73F1E000DB2000CDABB /* RookWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RookWhite.png; path = Resources/Pieces/RookWhite.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +133,7 @@
 				92D1E6F11DFF59FE000CDABB /* Assets.xcassets */,
 				92D1E6F31DFF59FE000CDABB /* LaunchScreen.storyboard */,
 				92D1E6F61DFF59FE000CDABB /* Info.plist */,
+				92D1E7331E000B27000CDABB /* Graphics */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -129,6 +154,33 @@
 				92D1E70C1DFF59FF000CDABB /* Info.plist */,
 			);
 			path = ChessUITests;
+			sourceTree = "<group>";
+		};
+		92D1E7321E000B21000CDABB /* Pieces */ = {
+			isa = PBXGroup;
+			children = (
+				92D1E7341E000DB2000CDABB /* BishopBlack.png */,
+				92D1E7351E000DB2000CDABB /* BishopWhite.png */,
+				92D1E7361E000DB2000CDABB /* KingBlack.png */,
+				92D1E7371E000DB2000CDABB /* KingWhite.png */,
+				92D1E7381E000DB2000CDABB /* KnightBlack.png */,
+				92D1E7391E000DB2000CDABB /* KnightWhite.png */,
+				92D1E73A1E000DB2000CDABB /* PawnBlack.png */,
+				92D1E73B1E000DB2000CDABB /* PawnWhite.png */,
+				92D1E73C1E000DB2000CDABB /* QueenBlack.png */,
+				92D1E73D1E000DB2000CDABB /* QueenWhite.png */,
+				92D1E73E1E000DB2000CDABB /* RookBlack.png */,
+				92D1E73F1E000DB2000CDABB /* RookWhite.png */,
+			);
+			name = Pieces;
+			sourceTree = "<group>";
+		};
+		92D1E7331E000B27000CDABB /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				92D1E7321E000B21000CDABB /* Pieces */,
+			);
+			name = Graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,8 +287,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92D1E74A1E000DB2000CDABB /* RookBlack.png in Resources */,
+				92D1E7421E000DB2000CDABB /* KingBlack.png in Resources */,
+				92D1E7461E000DB2000CDABB /* PawnBlack.png in Resources */,
+				92D1E7491E000DB2000CDABB /* QueenWhite.png in Resources */,
+				92D1E7431E000DB2000CDABB /* KingWhite.png in Resources */,
+				92D1E7401E000DB2000CDABB /* BishopBlack.png in Resources */,
 				92D1E6F51DFF59FE000CDABB /* LaunchScreen.storyboard in Resources */,
+				92D1E7471E000DB2000CDABB /* PawnWhite.png in Resources */,
+				92D1E74B1E000DB2000CDABB /* RookWhite.png in Resources */,
+				92D1E7441E000DB2000CDABB /* KnightBlack.png in Resources */,
+				92D1E7411E000DB2000CDABB /* BishopWhite.png in Resources */,
+				92D1E7481E000DB2000CDABB /* QueenBlack.png in Resources */,
 				92D1E6F21DFF59FE000CDABB /* Assets.xcassets in Resources */,
+				92D1E7451E000DB2000CDABB /* KnightWhite.png in Resources */,
 				92D1E6F01DFF59FE000CDABB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +556,7 @@
 				92D1E7111DFF59FF000CDABB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92D1E7121DFF59FF000CDABB /* Build configuration list for PBXNativeTarget "ChessTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +565,7 @@
 				92D1E7141DFF59FF000CDABB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92D1E7151DFF59FF000CDABB /* Build configuration list for PBXNativeTarget "ChessUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +574,7 @@
 				92D1E7171DFF59FF000CDABB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
