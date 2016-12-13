@@ -89,9 +89,11 @@ class Chessboard: UIView {
     
     private func showMovesForThisPiece(row: Int, col: Int) {
         
+        hideOldHighlightedPositions()
+        
         let piece = chess!.getPieceInPosition(row, col: col)
         let possibleMoves = chess!.possibleMovesOfThisPiece(piece, row: row, col: col)
-        hideOldHighlightedPositions()
+        
         markHighlightedPositions(possibleMoves)
         self.setNeedsDisplay()
     }
@@ -117,7 +119,7 @@ class Chessboard: UIView {
             for col in 1...8{
                 let thisPiece = chess?.chessboard[row - 1][col - 1]
                 if thisPiece < 0 {
-                    chess?.chessboard[row - 1][col - 1] = -(thisPiece!%10)
+                    chess?.chessboard[row - 1][col - 1] = 100 + thisPiece!
                 }
             }
         }
@@ -128,7 +130,7 @@ class Chessboard: UIView {
         
         for position in positions {
             let thisPiece = chess?.chessboard[position[0]][position[1]]
-            chess?.chessboard[position[0]][position[1]] = thisPiece! - 10
+            chess?.chessboard[position[0]][position[1]] = thisPiece! - 100
         }
     }
     

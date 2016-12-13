@@ -29,14 +29,14 @@ class Chess {
     
     func initialSetUp() {
         
-        chessboard = [[2, 3, 4, 6, 5, 4, 3, 2],
+        chessboard = [[0, 3, 4, 6, 5, 4, 3, 0],
                       [1, 1, 1, 1, 1, 1, 1, 1],
                       [0, 0, 0, 0, 0, 0, 0, 0],
+                      [2, 0, 0, 0, 2, 0, 0, 0],
                       [0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0],
-                      [22, 0, 0, 0, 0, 0, 0, 0],
+                      [22, 0, 0, 0, 0, 0, 0, 22],
                       [11, 11, 11, 11, 11, 11, 11, 11],
-                      [0, 33, 44, 66, 55, 44, 33, 22]]
+                      [0, 33, 44, 66, 55, 44, 33, 0]]
         
 //        setInitialPawns()
 //        setInitialRooks()
@@ -59,6 +59,7 @@ class Chess {
     
     func possibleMovesOfThisPiece(piece: Int, row: Int, col: Int) -> [[Int]]{
         
+        
         switch piece {
         case 1, 11:
             return possibleMovesOfThisPawn(piece, row: row, col: col)
@@ -75,13 +76,15 @@ class Chess {
         var possibleMoves = [[Int]]()
         var rowUp : Int
         var withinTop : Bool
-        
+        var adversaryInterval : [Int]
         if piece == whitePawn {
             rowUp = row + 1
             withinTop = row < 7
+            adversaryInterval = [Int](11..<67)
         } else {
             rowUp = row - 1
             withinTop = row > 0
+            adversaryInterval = [Int](1..<7)
         }
         
         if withinTop {
@@ -91,13 +94,16 @@ class Chess {
             }
             
             if col > 0 {
-                if chessboard[rowUp][col - 1] > 0 {
+                let thisPiece = chessboard[rowUp][col - 1]
+                if thisPiece != 0 && adversaryInterval.contains(thisPiece) {
                     possibleMoves.append([rowUp, col - 1])
                 }
             }
             
             if col < 7 {
-                if chessboard[rowUp][col + 1] > 0 {
+                let thisPiece = chessboard[rowUp][col + 1]
+
+                if thisPiece != 0 && adversaryInterval.contains(thisPiece) {
                     possibleMoves.append([rowUp, col + 1])
                 }
             }
@@ -111,12 +117,23 @@ class Chess {
         
         var possibleMoves = [[Int]]()
         
+        var adversaryInterval : [Int]
+        if piece == whiteRook {
+            adversaryInterval = [Int](11..<67)
+        } else {
+            adversaryInterval = [Int](1..<7)
+        }
+        
         //check left
         var thisCol = col
         while thisCol > 0 {
-            if chessboard[row][thisCol - 1] == 0 {
+            let thisPiece = chessboard[row][thisCol - 1]
+            if thisPiece == 0 {
                 possibleMoves.append([row, thisCol - 1])
                 thisCol -= 1
+            } else if adversaryInterval.contains(thisPiece) {
+                possibleMoves.append([row, thisCol - 1])
+                thisCol = 0
             } else {
                 thisCol = 0
             }
@@ -125,9 +142,13 @@ class Chess {
         //check right
         thisCol = col
         while thisCol < 7 {
-            if chessboard[row][thisCol + 1] == 0 {
+            let thisPiece = chessboard[row][thisCol + 1]
+            if thisPiece == 0 {
                 possibleMoves.append([row, thisCol + 1])
                 thisCol += 1
+            } else if adversaryInterval.contains(thisPiece) {
+                possibleMoves.append([row, thisCol + 1])
+                thisCol = 8
             } else {
                 thisCol = 8
             }
@@ -136,9 +157,13 @@ class Chess {
         //check up
         var thisRow = row
         while thisRow > 0 {
-            if chessboard[thisRow - 1][col] == 0 {
+            let thisPiece = chessboard[thisRow - 1][col]
+            if thisPiece == 0 {
                 possibleMoves.append([thisRow - 1, col])
                 thisRow -= 1
+            } else if adversaryInterval.contains(thisPiece) {
+                possibleMoves.append([thisRow - 1, col])
+                thisRow = 0
             } else {
                 thisRow = 0
             }
@@ -147,9 +172,13 @@ class Chess {
         //check down
         thisRow = row
         while thisRow < 7 {
-            if chessboard[thisRow + 1][col] == 0 {
+            let thisPiece = chessboard[thisRow + 1][col]
+            if thisPiece == 0 {
                 possibleMoves.append([thisRow + 1, col])
                 thisRow += 1
+            } else if adversaryInterval.contains(thisPiece) {
+                possibleMoves.append([thisRow + 1, col])
+                thisRow = 8
             } else {
                 thisRow = 8
             }
