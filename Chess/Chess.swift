@@ -29,12 +29,21 @@ class Chess {
     
     func initialSetUp() {
         
-        setInitialPawns()
-        setInitialRooks()
-        setInitialKnights()
-        setInitialBishops()
-        setInitialQueens()
-        setInitialKings()
+        chessboard = [[2, 3, 4, 6, 5, 4, 3, 2],
+                      [1, 1, 1, 1, 1, 1, 1, 1],
+                      [0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0],
+                      [22, 0, 0, 0, 0, 0, 0, 0],
+                      [11, 11, 11, 11, 11, 11, 11, 11],
+                      [0, 33, 44, 66, 55, 44, 33, 22]]
+        
+//        setInitialPawns()
+//        setInitialRooks()
+//        setInitialKnights()
+//        setInitialBishops()
+//        setInitialQueens()
+//        setInitialKings()
     }
     
     
@@ -82,13 +91,13 @@ class Chess {
             }
             
             if col > 0 {
-                if chessboard[rowUp][col - 1] != 0 {
+                if chessboard[rowUp][col - 1] > 0 {
                     possibleMoves.append([rowUp, col - 1])
                 }
             }
             
             if col < 7 {
-                if chessboard[rowUp][col + 1] != 0 {
+                if chessboard[rowUp][col + 1] > 0 {
                     possibleMoves.append([rowUp, col + 1])
                 }
             }

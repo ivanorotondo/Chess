@@ -10,6 +10,14 @@ import UIKit
 
 class ChessVC : UIViewController {
 
+    @IBOutlet var chessboardView: Chessboard!
+    
+    var chess = Chess()
 
+    override func viewDidLoad() {
+        
+        chessboardView.chess = chess
+        chess.initialSetUp()
+    }
 }
 

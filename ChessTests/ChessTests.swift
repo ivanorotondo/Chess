@@ -60,13 +60,13 @@ class ChessTests: XCTestCase {
     
     func testInitialQueensPosition() {
         XCTAssert(chess.getPieceInPosition(0, col: 4) == 5)
-        XCTAssert(chess.getPieceInPosition(7, col: 3) == 55)
+        XCTAssert(chess.getPieceInPosition(7, col: 4) == 55)
     }
     
     
     func testInitialKingsPosition() {
         XCTAssert(chess.getPieceInPosition(0, col: 3) == 6)
-        XCTAssert(chess.getPieceInPosition(7, col: 4) == 66)
+        XCTAssert(chess.getPieceInPosition(7, col: 3) == 66)
     }
     
     

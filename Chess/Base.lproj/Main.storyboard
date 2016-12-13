@@ -41,6 +41,9 @@
                             <constraint firstItem="xg9-lE-hX6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YnF-2I-Vuf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="chessboardView" destination="xg9-lE-hX6" id="iuc-Qc-rkV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
