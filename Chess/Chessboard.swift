@@ -15,6 +15,7 @@ class Chessboard: UIView {
     var chessEngine : ChessEngine?
     var squareLength : CGFloat!
     
+    var lastTappedPiecePosition = [Int]()
     
     override func drawRect(rect: CGRect) {
         
@@ -24,14 +25,35 @@ class Chessboard: UIView {
         drawMoves()
         drawPieces(chessEngine!.chessboard)
         
-        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(pieceWasTapped))
+        self.userInteractionEnabled = true
+        self.addGestureRecognizer(tapRecognizer)
     }
     
-        
+    
     @objc private func pieceWasTapped(sender: UITapGestureRecognizer) {
+        
         let (row, col) = getPositionOfPoint(sender.locationInView(self).x, y: sender.locationInView(self).y)
-        showMovesForThisPiece(row, col: col)
-//        print("row: \(row), col: \(col)")
+        
+        //checkIfHighlighted -> move piece
+        if positionIsHighlighted(row, col: col) {
+            hideOldHighlightedPositions()
+            movePieceFromPosition(lastTappedPiecePosition, toPosition: [row, col])
+        } else {
+            
+            showMovesForThisPiece(row, col: col)
+        }
+        
+        lastTappedPiecePosition = [row, col]
+    }
+    
+    
+    private func movePieceFromPosition(position: [Int], toPosition: [Int]) {
+        
+        let piece = chessEngine?.getPieceInPosition(position[0], col: position[1])
+        chessEngine?.setPieceInPosition(0, row: position[0], col: position[1])
+        chessEngine?.setPieceInPosition(piece!, row: toPosition[0], col: toPosition[1])
+        self.setNeedsDisplay()
     }
     
     
@@ -58,6 +80,17 @@ class Chessboard: UIView {
         let x = (CGFloat(col - 1)) * squareLength
         let y = (CGFloat(8 - row)) * squareLength
         return  CGRect(x: x, y: y, width: squareLength, height: squareLength)
+    }
+    
+    
+    private func positionIsHighlighted(row: Int, col: Int) -> Bool {
+        
+        let thisPiece = chessEngine?.chessboard[row][col]
+        if thisPiece < 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
     
@@ -190,9 +223,6 @@ class Chessboard: UIView {
                         break
                     }
                     
-                    let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(pieceWasTapped))
-                    pieceImage.userInteractionEnabled = true
-                    pieceImage.addGestureRecognizer(tapRecognizer)
                     addSubview(pieceImage)
                 }
             }

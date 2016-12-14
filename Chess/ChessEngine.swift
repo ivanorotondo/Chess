@@ -28,12 +28,12 @@ class ChessEngine {
     
     func initialSetUp() {
         
-        chessboard = [[0, 3, 0, 6, 0, 0, 3, 0],
+        chessboard = [[0, 3, 0, 0, 0, 0, 3, 0],
                       [1, 1, 1, 1, 1, 1, 1, 1],
                       [0, 0, 0, 0, 0, 0, 4, 0],
                       [2, 0, 0, 5, 0, 0, 0, 0],
                       [0, 0, 33, 0, 0, 0, 0, 0],
-                      [22, 0, 0, 0, 4, 2, 55, 22],
+                      [22, 0, 0, 6, 4, 2, 55, 22],
                       [11, 11, 11, 11, 11, 11, 11, 11],
                       [0, 0, 44, 66, 0, 44, 33, 0]]
         
@@ -70,6 +70,8 @@ class ChessEngine {
             return possibleMovesOfThisBishop(piece, row: row, col: col)
         case 5, 55:
             return possibleMovesOfThisQueen(piece, row: row, col: col)
+        case 6, 66:
+            return possibleMovesOfThisKing(piece, row: row, col: col)
         default:
             return []
         }

@@ -16,10 +16,10 @@ extension ChessEngine {
         var possibleMoves = [[Int]]()
         var adversaryInterval = getAdversaryInterval(piece)
         
-        let possibleMovesLeft = checkLeft(adversaryInterval, row: row, col: col)
-        let possibleMovesRight = checkRight(adversaryInterval, row: row, col: col)
-        let possibleMovesUp = checkUp(adversaryInterval, row: row, col: col)
-        let possibleMovesDown = checkDown(adversaryInterval, row: row, col: col)
+        let possibleMovesLeft = checkLeft(adversaryInterval, row: row, col: col, once: false)
+        let possibleMovesRight = checkRight(adversaryInterval, row: row, col: col, once: false)
+        let possibleMovesUp = checkUp(adversaryInterval, row: row, col: col, once: false)
+        let possibleMovesDown = checkDown(adversaryInterval, row: row, col: col, once: false)
 
         possibleMoves.appendContentsOf(possibleMovesLeft)
         possibleMoves.appendContentsOf(possibleMovesRight)
@@ -29,7 +29,7 @@ extension ChessEngine {
         return possibleMoves
     }
     
-    func checkUp(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+    func checkUp(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]]{
         var possibleMoves = [[Int]]()
         var thisRow = row
         while thisRow > 0 {
@@ -43,13 +43,17 @@ extension ChessEngine {
             } else {
                 thisRow = 0
             }
+            
+            if once == true {
+                thisRow = 0
+            }
         }
         
         return possibleMoves
     }
     
     
-    func checkDown(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]] {
+    func checkDown(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]] {
         var possibleMoves = [[Int]]()
         var thisRow = row
         while thisRow < 7 {
@@ -63,12 +67,17 @@ extension ChessEngine {
             } else {
                 thisRow = 8
             }
+            
+            
+            if once == true {
+                thisRow = 8
+            }
         }
         return possibleMoves
     }
     
     
-    func checkRight(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]] {
+    func checkRight(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]] {
         var possibleMoves = [[Int]]()
         var thisCol = col
         while thisCol < 7 {
@@ -82,12 +91,16 @@ extension ChessEngine {
             } else {
                 thisCol = 8
             }
+            
+            if once == true {
+                thisCol = 8
+            }
         }
         return possibleMoves
     }
     
     
-    func checkLeft(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]] {
+    func checkLeft(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]] {
         var possibleMoves = [[Int]]()
         var thisCol = col
         while thisCol > 0 {
@@ -99,6 +112,11 @@ extension ChessEngine {
                 possibleMoves.append([row, thisCol - 1])
                 thisCol = 0
             } else {
+                thisCol = 0
+            }
+            
+            
+            if once == true {
                 thisCol = 0
             }
         }

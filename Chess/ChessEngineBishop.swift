@@ -16,10 +16,10 @@ extension ChessEngine {
         
         var adversaryInterval = getAdversaryInterval(piece)
         
-        let possibleMovesLeftUp = checkLeftUp(adversaryInterval, row: row, col: col)
-        let possibleMovesRightUp = checkRightUp(adversaryInterval, row: row, col: col)
-        let possibleMovesLeftDown = checkLeftDown(adversaryInterval, row: row, col: col)
-        let possibleMovesRightDown = checkRightDown(adversaryInterval, row: row, col: col)
+        let possibleMovesLeftUp = checkLeftUp(adversaryInterval, row: row, col: col, once: false)
+        let possibleMovesRightUp = checkRightUp(adversaryInterval, row: row, col: col, once: false)
+        let possibleMovesLeftDown = checkLeftDown(adversaryInterval, row: row, col: col, once: false)
+        let possibleMovesRightDown = checkRightDown(adversaryInterval, row: row, col: col, once: false)
 
         possibleMoves.appendContentsOf(possibleMovesLeftUp)
         possibleMoves.appendContentsOf(possibleMovesRightUp)
@@ -30,7 +30,7 @@ extension ChessEngine {
     }
     
     
-    func checkLeftUp(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+    func checkLeftUp(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]]{
         var possibleMoves = [[Int]]()
         var thisCol = col
         var thisRow = row
@@ -46,13 +46,17 @@ extension ChessEngine {
             } else {
                 thisCol = 0
             }
+            
+            if once == true {
+                thisCol = 0
+            }
         }
         
         return possibleMoves
     }
     
     
-    func checkLeftDown(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+    func checkLeftDown(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]]{
         var possibleMoves = [[Int]]()
         var thisCol = col
         var thisRow = row
@@ -68,13 +72,17 @@ extension ChessEngine {
             } else {
                 thisCol = 0
             }
+            
+            if once == true {
+                thisCol = 0
+            }
         }
         
         return possibleMoves
     }
     
     
-    func checkRightDown(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+    func checkRightDown(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]]{
         var possibleMoves = [[Int]]()
         var thisCol = col
         var thisRow = row
@@ -90,13 +98,17 @@ extension ChessEngine {
             } else {
                 thisCol = 8
             }
+            
+            if once == true {
+                thisCol = 8
+            }
         }
         
         return possibleMoves
     }
     
     
-    func checkRightUp(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+    func checkRightUp(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]]{
         var possibleMoves = [[Int]]()
         var thisCol = col
         var thisRow = row
@@ -110,6 +122,10 @@ extension ChessEngine {
                 possibleMoves.append([thisRow + 1, thisCol + 1])
                 thisCol = 8
             } else {
+                thisCol = 8
+            }
+            
+            if once == true {
                 thisCol = 8
             }
         }
