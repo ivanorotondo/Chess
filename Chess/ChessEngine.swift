@@ -26,17 +26,16 @@ class ChessEngine {
     let blackQueen = 55
     let blackKing = 66
     
-    
     func initialSetUp() {
         
-        chessboard = [[0, 3, 0, 6, 5, 0, 3, 0],
+        chessboard = [[0, 3, 0, 6, 0, 0, 3, 0],
                       [1, 1, 1, 1, 1, 1, 1, 1],
                       [0, 0, 0, 0, 0, 0, 4, 0],
-                      [2, 0, 0, 0, 0, 0, 0, 0],
+                      [2, 0, 0, 5, 0, 0, 0, 0],
                       [0, 0, 33, 0, 0, 0, 0, 0],
-                      [22, 0, 0, 0, 4, 2, 0, 22],
+                      [22, 0, 0, 0, 4, 2, 55, 22],
                       [11, 11, 11, 11, 11, 11, 11, 11],
-                      [0, 0, 44, 66, 55, 44, 33, 0]]
+                      [0, 0, 44, 66, 0, 44, 33, 0]]
         
 //        setInitialPawns()
 //        setInitialRooks()
@@ -69,9 +68,24 @@ class ChessEngine {
             return possibleMovesOfThisKnight(piece, row: row, col: col)
         case 4, 44:
             return possibleMovesOfThisBishop(piece, row: row, col: col)
+        case 5, 55:
+            return possibleMovesOfThisQueen(piece, row: row, col: col)
         default:
             return []
         }
+    }
+    
+    
+    func getAdversaryInterval(piece: Int) -> [Int] {
+
+        var adversaryInterval : [Int]
+
+        if piece < 10 {
+            adversaryInterval = [Int](11..<67)
+        } else {
+            adversaryInterval = [Int](1..<7)
+        }
+        return adversaryInterval
     }
     
     

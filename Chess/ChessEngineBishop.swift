@@ -14,14 +14,24 @@ extension ChessEngine {
         
         var possibleMoves = [[Int]]()
         
-        var adversaryInterval : [Int]
-        if piece == whiteBishop {
-            adversaryInterval = [Int](11..<67)
-        } else {
-            adversaryInterval = [Int](1..<7)
-        }
+        var adversaryInterval = getAdversaryInterval(piece)
         
-        //check left-up
+        let possibleMovesLeftUp = checkLeftUp(adversaryInterval, row: row, col: col)
+        let possibleMovesRightUp = checkRightUp(adversaryInterval, row: row, col: col)
+        let possibleMovesLeftDown = checkLeftDown(adversaryInterval, row: row, col: col)
+        let possibleMovesRightDown = checkRightDown(adversaryInterval, row: row, col: col)
+
+        possibleMoves.appendContentsOf(possibleMovesLeftUp)
+        possibleMoves.appendContentsOf(possibleMovesRightUp)
+        possibleMoves.appendContentsOf(possibleMovesLeftDown)
+        possibleMoves.appendContentsOf(possibleMovesRightDown)
+        
+        return possibleMoves
+    }
+    
+    
+    func checkLeftUp(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+        var possibleMoves = [[Int]]()
         var thisCol = col
         var thisRow = row
         while thisCol > 0 && thisRow < 7 {
@@ -38,10 +48,14 @@ extension ChessEngine {
             }
         }
         
-        
-        //check left-down
-        thisCol = col
-        thisRow = row
+        return possibleMoves
+    }
+    
+    
+    func checkLeftDown(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+        var possibleMoves = [[Int]]()
+        var thisCol = col
+        var thisRow = row
         while thisCol > 0 && thisRow > 0 {
             let thisPiece = chessboard[thisRow - 1][thisCol - 1]
             if thisPiece == 0 {
@@ -56,10 +70,14 @@ extension ChessEngine {
             }
         }
         
-        
-        //check right-down
-        thisCol = col
-        thisRow = row
+        return possibleMoves
+    }
+    
+    
+    func checkRightDown(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+        var possibleMoves = [[Int]]()
+        var thisCol = col
+        var thisRow = row
         while thisCol < 7 && thisRow > 0 {
             let thisPiece = chessboard[thisRow - 1][thisCol + 1]
             if thisPiece == 0 {
@@ -74,10 +92,14 @@ extension ChessEngine {
             }
         }
         
-        
-        //check right-up
-        thisCol = col
-        thisRow = row
+        return possibleMoves
+    }
+    
+    
+    func checkRightUp(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+        var possibleMoves = [[Int]]()
+        var thisCol = col
+        var thisRow = row
         while thisCol < 7 && thisRow < 7 {
             let thisPiece = chessboard[thisRow + 1][thisCol + 1]
             if thisPiece == 0 {
@@ -91,7 +113,7 @@ extension ChessEngine {
                 thisCol = 8
             }
         }
-         
+        
         return possibleMoves
     }
     

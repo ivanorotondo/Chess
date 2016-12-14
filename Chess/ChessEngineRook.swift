@@ -14,45 +14,23 @@ extension ChessEngine {
     func possibleMovesOfThisRook(piece: Int, row: Int, col: Int) -> [[Int]] {
         
         var possibleMoves = [[Int]]()
+        var adversaryInterval = getAdversaryInterval(piece)
         
-        var adversaryInterval : [Int]
-        if piece == whiteRook {
-            adversaryInterval = [Int](11..<67)
-        } else {
-            adversaryInterval = [Int](1..<7)
-        }
+        let possibleMovesLeft = checkLeft(adversaryInterval, row: row, col: col)
+        let possibleMovesRight = checkRight(adversaryInterval, row: row, col: col)
+        let possibleMovesUp = checkUp(adversaryInterval, row: row, col: col)
+        let possibleMovesDown = checkDown(adversaryInterval, row: row, col: col)
+
+        possibleMoves.appendContentsOf(possibleMovesLeft)
+        possibleMoves.appendContentsOf(possibleMovesRight)
+        possibleMoves.appendContentsOf(possibleMovesUp)
+        possibleMoves.appendContentsOf(possibleMovesDown)
         
-        //check left
-        var thisCol = col
-        while thisCol > 0 {
-            let thisPiece = chessboard[row][thisCol - 1]
-            if thisPiece == 0 {
-                possibleMoves.append([row, thisCol - 1])
-                thisCol -= 1
-            } else if adversaryInterval.contains(thisPiece) {
-                possibleMoves.append([row, thisCol - 1])
-                thisCol = 0
-            } else {
-                thisCol = 0
-            }
-        }
-        
-        //check right
-        thisCol = col
-        while thisCol < 7 {
-            let thisPiece = chessboard[row][thisCol + 1]
-            if thisPiece == 0 {
-                possibleMoves.append([row, thisCol + 1])
-                thisCol += 1
-            } else if adversaryInterval.contains(thisPiece) {
-                possibleMoves.append([row, thisCol + 1])
-                thisCol = 8
-            } else {
-                thisCol = 8
-            }
-        }
-        
-        //check up
+        return possibleMoves
+    }
+    
+    func checkUp(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]]{
+        var possibleMoves = [[Int]]()
         var thisRow = row
         while thisRow > 0 {
             let thisPiece = chessboard[thisRow - 1][col]
@@ -67,8 +45,13 @@ extension ChessEngine {
             }
         }
         
-        //check down
-        thisRow = row
+        return possibleMoves
+    }
+    
+    
+    func checkDown(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]] {
+        var possibleMoves = [[Int]]()
+        var thisRow = row
         while thisRow < 7 {
             let thisPiece = chessboard[thisRow + 1][col]
             if thisPiece == 0 {
@@ -81,7 +64,45 @@ extension ChessEngine {
                 thisRow = 8
             }
         }
-        
         return possibleMoves
     }
+    
+    
+    func checkRight(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]] {
+        var possibleMoves = [[Int]]()
+        var thisCol = col
+        while thisCol < 7 {
+            let thisPiece = chessboard[row][thisCol + 1]
+            if thisPiece == 0 {
+                possibleMoves.append([row, thisCol + 1])
+                thisCol += 1
+            } else if adversaryInterval.contains(thisPiece) {
+                possibleMoves.append([row, thisCol + 1])
+                thisCol = 8
+            } else {
+                thisCol = 8
+            }
+        }
+        return possibleMoves
+    }
+    
+    
+    func checkLeft(adversaryInterval: [Int], row: Int, col: Int) -> [[Int]] {
+        var possibleMoves = [[Int]]()
+        var thisCol = col
+        while thisCol > 0 {
+            let thisPiece = chessboard[row][thisCol - 1]
+            if thisPiece == 0 {
+                possibleMoves.append([row, thisCol - 1])
+                thisCol -= 1
+            } else if adversaryInterval.contains(thisPiece) {
+                possibleMoves.append([row, thisCol - 1])
+                thisCol = 0
+            } else {
+                thisCol = 0
+            }
+        }
+        return possibleMoves
+    }
+
 }
