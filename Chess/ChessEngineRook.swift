@@ -29,7 +29,7 @@ extension ChessEngine {
         return possibleMoves
     }
     
-    func checkUp(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]]{
+    func checkDown(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]]{
         var possibleMoves = [[Int]]()
         var thisRow = row
         while thisRow > 0 {
@@ -53,7 +53,7 @@ extension ChessEngine {
     }
     
     
-    func checkDown(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]] {
+    func checkUp(adversaryInterval: [Int], row: Int, col: Int, once: Bool) -> [[Int]] {
         var possibleMoves = [[Int]]()
         var thisRow = row
         while thisRow < 7 {

@@ -9,7 +9,7 @@
 import XCTest
 @testable import Chess
 
-class ChessEngineTests: XCTestCase {
+class ChessEngineTestInit: XCTestCase {
     
     var chessEngine : ChessEngine!
     
@@ -35,6 +35,7 @@ class ChessEngineTests: XCTestCase {
     
     
     func testInitialRooksPosition() {
+        
         XCTAssert(chessEngine.getPieceInPosition(0, col: 0) == 2)
         XCTAssert(chessEngine.getPieceInPosition(0, col: 7) == 2)
         XCTAssert(chessEngine.getPieceInPosition(7, col: 0) == 22)
@@ -43,6 +44,7 @@ class ChessEngineTests: XCTestCase {
     
     
     func testInitialKnightsPosition() {
+        
         XCTAssert(chessEngine.getPieceInPosition(0, col: 1) == 3)
         XCTAssert(chessEngine.getPieceInPosition(0, col: 6) == 3)
         XCTAssert(chessEngine.getPieceInPosition(7, col: 1) == 33)
@@ -51,6 +53,7 @@ class ChessEngineTests: XCTestCase {
     
     
     func testInitialBishopsPosition() {
+        
         XCTAssert(chessEngine.getPieceInPosition(0, col: 2) == 4)
         XCTAssert(chessEngine.getPieceInPosition(0, col: 5) == 4)
         XCTAssert(chessEngine.getPieceInPosition(7, col: 2) == 44)
@@ -59,12 +62,14 @@ class ChessEngineTests: XCTestCase {
     
     
     func testInitialQueensPosition() {
+        
         XCTAssert(chessEngine.getPieceInPosition(0, col: 3) == 5)
         XCTAssert(chessEngine.getPieceInPosition(7, col: 3) == 55)
     }
     
     
     func testInitialKingsPosition() {
+        
         XCTAssert(chessEngine.getPieceInPosition(0, col: 4) == 6)
         XCTAssert(chessEngine.getPieceInPosition(7, col: 4) == 66)
     }
@@ -139,39 +144,5 @@ class ChessEngineTests: XCTestCase {
     }
     
     
-    func testMovesPawns() {
-        
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(1, row: 1, col: 4) == [[2, 4]])
-        
-        chessEngine.setPieceInPosition(11, row: 2, col: 6)
-        chessEngine.setPieceInPosition(11, row: 1, col: 7)
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(1, row: 1, col: 7) == [[2, 7],[2, 6]])
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(11, row: 2, col: 6) == [[1, 5]])
-        
-        chessEngine.setPieceInPosition(11, row: 2, col: 1)
-        chessEngine.setPieceInPosition(11, row: 2, col: 2)
-        chessEngine.setPieceInPosition(11, row: 2, col: 3)
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(1, row: 1, col: 2) == [[2, 1],[2, 3]])
-        
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(1, row: 7, col: 3) == [])
-    }
-    
-    
-    func testMovesRooks() {
-        chessEngine.setPieceInPosition(2, row: 2, col: 0)
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(2, row: 2, col: 0) == [[2, 1],[2, 2],[2, 3],[2, 4],[2, 5],[2, 6],[2, 7], [3,0],[4,0],[5,0],[6,0]])
-        
-        chessEngine.setPieceInPosition(2, row: 3, col: 0)
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(2, row: 2, col: 0) == [[2, 1],[2, 2],[2, 3],[2, 4],[2, 5],[2, 6],[2, 7]])
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(2, row: 3, col: 0) == [[3, 1],[3, 2],[3, 3],[3, 4],[3, 5],[3, 6],[3, 7],[4,0],[5,0],[6,0]])
-    }
-    
-    func testMovesBishops() {
-        chessEngine.setPieceInPosition(3, row: 2, col: 4)
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(3, row: 2, col: 4) == [[3, 3],[4, 2],[5, 1],[6, 0],[3, 5],[4, 6],[5, 7]])
-        
-        chessEngine.setPieceInPosition(2, row: 3, col: 0)
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(2, row: 2, col: 0) == [[2, 1],[2, 2],[2, 3],[2, 4],[2, 5],[2, 6],[2, 7]])
-        XCTAssert(chessEngine.possibleMovesOfThisPiece(2, row: 3, col: 0) == [[3, 1],[3, 2],[3, 3],[3, 4],[3, 5],[3, 6],[3, 7],[4,0],[5,0],[6,0]])
-    }
+
 }

@@ -23,8 +23,9 @@ extension ChessEngine {
 
         possibleMoves.appendContentsOf(possibleMovesLeftUp)
         possibleMoves.appendContentsOf(possibleMovesRightUp)
-        possibleMoves.appendContentsOf(possibleMovesLeftDown)
         possibleMoves.appendContentsOf(possibleMovesRightDown)
+        possibleMoves.appendContentsOf(possibleMovesLeftDown)
+
         
         return possibleMoves
     }
