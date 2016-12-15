@@ -17,7 +17,7 @@ class ChessVC : UIViewController {
     override func viewDidLoad() {
         
         chessboardView.chessEngine = chessEngine
-        chessEngine.initialSetUp()
+        chessEngine.initCustomChessboard()
     }
 }
 

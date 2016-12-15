@@ -26,23 +26,28 @@ class ChessEngine {
     let blackQueen = 55
     let blackKing = 66
     
-    func initialSetUp() {
+    func initCustomChessboard() {
         
-        chessboard = [[0, 3, 0, 0, 0, 0, 3, 0],
+        chessboard = [[0, 3, 0, 0, 5, 0, 3, 0],
                       [1, 1, 1, 1, 1, 1, 1, 1],
                       [0, 0, 0, 0, 0, 0, 4, 0],
-                      [2, 0, 0, 5, 0, 0, 0, 0],
+                      [2, 0, 0, 0, 0, 0, 0, 0],
                       [0, 0, 33, 0, 0, 0, 0, 0],
                       [22, 0, 0, 6, 4, 2, 55, 22],
                       [11, 11, 11, 11, 11, 11, 11, 11],
                       [0, 0, 44, 66, 0, 44, 33, 0]]
         
-//        setInitialPawns()
-//        setInitialRooks()
-//        setInitialKnights()
-//        setInitialBishops()
-//        setInitialQueens()
-//        setInitialKings()
+
+    }
+    
+    
+    func initChessboard() {
+        setInitialPawns()
+        setInitialRooks()
+        setInitialKnights()
+        setInitialBishops()
+        setInitialQueens()
+        setInitialKings()
     }
     
     
@@ -125,13 +130,13 @@ class ChessEngine {
     
     
     private func setInitialQueens() {
-        setPieceInPositions(whiteQueen, row: 0, col: [4])
+        setPieceInPositions(whiteQueen, row: 0, col: [3])
         setPieceInPositions(blackQueen, row: 7, col: [3])
     }
     
     
     private func setInitialKings() {
-        setPieceInPositions(whiteKing, row: 0, col: [3])
+        setPieceInPositions(whiteKing, row: 0, col: [4])
         setPieceInPositions(blackKing, row: 7, col: [4])
     }
 }

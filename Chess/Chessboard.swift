@@ -14,6 +14,7 @@ class Chessboard: UIView {
         
     var chessEngine : ChessEngine?
     var squareLength : CGFloat!
+    var piecesImageArray = [UIImageView]()
     
     var lastTappedPiecePosition = [Int]()
     
@@ -38,6 +39,7 @@ class Chessboard: UIView {
         //checkIfHighlighted -> move piece
         if positionIsHighlighted(row, col: col) {
             hideOldHighlightedPositions()
+            removeAllPieces()
             movePieceFromPosition(lastTappedPiecePosition, toPosition: [row, col])
         } else {
             
@@ -182,6 +184,13 @@ class Chessboard: UIView {
     }
     
     
+    private func removeAllPieces() {
+        for piece in piecesImageArray {
+            piece.removeFromSuperview()
+        }
+    }
+    
+    
     private func drawPieces(chessboard: [[Int]]) {
         
         for row in 1...8 {
@@ -223,6 +232,7 @@ class Chessboard: UIView {
                         break
                     }
                     
+                    piecesImageArray.append(pieceImage)
                     addSubview(pieceImage)
                 }
             }
