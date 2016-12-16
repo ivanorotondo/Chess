@@ -26,6 +26,7 @@ class ChessEngine {
     let blackQueen = 55
     let blackKing = 66
     
+    
     func initCustomChessboard() {
         
         chessboard = [[0, 3, 0, 0, 5, 0, 3, 0],

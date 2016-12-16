@@ -78,4 +78,14 @@ class ChessEngineTestMoves: XCTestCase {
         chessEngine.setPieceInPosition(5, row: 3, col: 3)
         XCTAssert(chessEngine.possibleMovesOfThisPiece(5, row: 3, col: 3) == [[3, 2],[3, 1],[3, 0],[4, 2],[5, 1],[6, 0],[4, 3],[5, 3],[6, 3],[4, 4],[5, 5],[6, 6],[3, 4],[3, 5],[3, 6],[3, 7],[2, 4],[2, 3],[2, 2]])
     }
+    
+    
+    func testMovesKing() {
+        
+        chessEngine.setPieceInPosition(6, row: 5, col: 3)
+        XCTAssert(chessEngine.possibleMovesOfThisPiece(6, row: 5, col: 3) == [[5, 2],[6, 2],[6, 3],[6, 4],[5, 4],[4, 4],[4, 3],[4, 2]])
+        
+        chessEngine.setPieceInPosition(6, row: 2, col: 3)
+        XCTAssert(chessEngine.possibleMovesOfThisPiece(6, row: 2, col: 3) == [[2, 2],[3, 2],[3, 3],[3, 4],[2, 4]])
+    }
 }

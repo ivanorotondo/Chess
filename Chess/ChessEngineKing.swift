@@ -25,13 +25,13 @@ extension ChessEngine {
         let possibleMovesRightDown = checkRightDown(adversaryInterval, row: row, col: col, once: true)
         
         possibleMoves.appendContentsOf(possibleMovesLeft)
-        possibleMoves.appendContentsOf(possibleMovesRight)
-        possibleMoves.appendContentsOf(possibleMovesUp)
-        possibleMoves.appendContentsOf(possibleMovesDown)
         possibleMoves.appendContentsOf(possibleMovesLeftUp)
+        possibleMoves.appendContentsOf(possibleMovesUp)
         possibleMoves.appendContentsOf(possibleMovesRightUp)
-        possibleMoves.appendContentsOf(possibleMovesLeftDown)
+        possibleMoves.appendContentsOf(possibleMovesRight)
         possibleMoves.appendContentsOf(possibleMovesRightDown)
+        possibleMoves.appendContentsOf(possibleMovesDown)
+        possibleMoves.appendContentsOf(possibleMovesLeftDown)
         
         return possibleMoves
     }
